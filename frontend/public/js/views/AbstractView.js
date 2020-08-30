@@ -1,10 +1,11 @@
+import RS from '../router/lib/router-settings.js';
+
 export default class {
   htmlFile;
   cssFile;
 
   constructor(params) {
     this.params = params;
-    console.log(params);
   }
 
   setTitle(title) {
@@ -29,16 +30,14 @@ export default class {
       const xhr = new XMLHttpRequest();
       xhr.open('GET', file, true);
       xhr.onloadend = () => {
-        console.log('adding CSS');
         const head = document.head || document.getElementsByTagName('head')[0];
         const style = document.createElement('style');
-
         head.appendChild(style);
 
         style.type = 'text/css';
+        style.setAttribute(RS.styleDataAttribute, true);
         style.appendChild(document.createTextNode(xhr.responseText));
 
-        document.head.append(`<style>${xhr.responseText}</style>`);
         resolve();
       };
       xhr.send();

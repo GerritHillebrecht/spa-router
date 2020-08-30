@@ -6,8 +6,8 @@ export default class extends AbstractView {
 
   headerImage = faker.image.image();
 
-  constructor() {
-    super();
+  constructor(params) {
+    super(params);
     this.setTitle('BlogPost')
   }
 }

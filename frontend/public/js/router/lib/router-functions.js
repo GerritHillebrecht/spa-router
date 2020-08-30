@@ -2,7 +2,6 @@ import Routes from './router-routes.js';
 import RS from './router-settings.js';
 
 const getParams = (path, args) => {
-  console.log({ path, args });
   const values = args.slice(1);
   const keys = Array.from(path.matchAll(/:(\w+)/g)).map((result) => result[1]);
 
@@ -22,8 +21,6 @@ export const navigateTo = (url) => {
 };
 
 export const loadRoute = async () => {
-  // console.log(pathToRegex('/blog/:slug'));
-
   // comment out if you want to allow same page loading after clicking a link
   if (Routes.currentRoute === location.pathname) {
     return console.log(`Path ${Routes.currentRoute} already loaded`);
@@ -44,12 +41,21 @@ export const loadRoute = async () => {
     )
   );
 
+  // Clear Previous Style
+  document.querySelectorAll('style').forEach((element) => {
+    if (element.matches(`[${RS.styleDataAttribute}="true"]`)) {
+      element.remove();
+    }
+  });
+
+  // Add Custom CSS
   if (view.cssFile) {
     await view.addStyleSheet(
       `/${RS.assetFolder}/js/${RS.viewFolder}/${view.cssFile}`
     );
   }
 
+  // Load Page
   document.querySelector(`#${RS.routerOutlet}`).innerHTML = view.htmlFile
     ? await view.loadHTMLFile(
         `/${RS.assetFolder}/js/${RS.viewFolder}/${view.htmlFile}`
