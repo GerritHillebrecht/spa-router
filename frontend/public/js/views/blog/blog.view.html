@@ -1,0 +1,18 @@
+<div class="blog-posts">
+  {{#each blogPosts}}
+  <a href="/blog/randomSlug" class="blog-post-card">
+    <div
+      class="blog-post-card__blog-image"
+      style="background-image: url({{image}});"
+    ></div>
+    <div class="blog-post-card__preview-text">
+      <h3>{{title}}</h3>
+      <p>{{previewText}}</p>
+    </div>
+    <div class="blog-post-card__author-data">
+      <div class="avatar" style="background-image: url({{avatar}});"></div>
+      <p>{{ author }}</p>
+    </div>
+  </a>
+  {{/each}}
+</div>

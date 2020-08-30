@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="/public/css/router.example.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <nav>
+        <h1 class="logo">SPA-Router</h1>
+        <ul>
+          <li>
+            <a href="/" data-router-link>Home</a>
+          </li>
+          <li>
+            <a href="blog" data-router-link>Blog</a>
+          </li>
+          <li>
+            <a href="settings" data-router-link>Settings</a>
+          </li>
+        </ul>
+      </nav>
+      <div id="router-outlet" class="content"></div>
+    </main>
+
+    <script defer type="module" src="/public/js/index.js"></script>
+    <script defer src="/public/js/vendor/handlebars/handlebars.js"></script>
+    <script defer src="/public/js/vendor/mongoose/mongoose.js"></script>
+    <script defer src="/public/js/vendor/faker/faker.js"></script>
+  </body>
+</html>
